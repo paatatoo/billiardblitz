@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dkrmwpvyvqdkh"]
+
+[ext_resource type="Script" uid="uid://duif8ckw1bbii" path="res://Scenes/hazard_scenes/beer_puddle.gd" id="1_xqa7x"]
+[ext_resource type="Texture2D" uid="uid://bqgeymlbkfid2" path="res://icon.svg" id="2_4c21d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c16j"]
+size = Vector2(402, 246)
+
+[node name="BeerPuddle" type="Area2D" unique_id=273863080]
+z_index = -4
+script = ExtResource("1_xqa7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1689328606]
+shape = SubResource("RectangleShape2D_3c16j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1219626928]
+scale = Vector2(3.0937502, 1.9375)
+texture = ExtResource("2_4c21d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
