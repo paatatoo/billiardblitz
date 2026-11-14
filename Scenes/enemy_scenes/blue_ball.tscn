@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dbwx25hjwna3r" path="res://Assets/enemy_assets/blueball.png" id="1_m6x62"]
 [ext_resource type="FontFile" uid="uid://dbwlkmglgxbsx" path="res://Assets/dogicapixel.ttf" id="2_8xuby"]
 [ext_resource type="Texture2D" uid="uid://db3y6lg5oqarj" path="res://Assets/player_assets/shadow_ellipse.png" id="3_sdjrx"]
+[ext_resource type="AudioStream" uid="uid://nptiukmv34nt" path="res://Assets/audio_assets/Hitting Wall.mp3" id="6_upvel"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdjrx"]
 radius = 26.925823
@@ -54,5 +55,14 @@ autowrap_mode = 1
 position = Vector2(0, 14)
 shape = SubResource("CircleShape2D_sdjrx")
 
+[node name="shardstimer" type="Timer" parent="." unique_id=1115435793]
+
+[node name="move_timer" type="Timer" parent="." unique_id=68965432]
+
+[node name="hit" type="AudioStreamPlayer" parent="." unique_id=20657295]
+stream = ExtResource("6_upvel")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="shardstimer" to="." method="_on_shardstimer_timeout"]
+[connection signal="timeout" from="move_timer" to="." method="_on_move_timer_timeout"]

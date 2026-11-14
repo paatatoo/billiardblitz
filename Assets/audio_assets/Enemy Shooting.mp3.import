@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctfd5krwwgndf"
+path="res://.godot/imported/Enemy Shooting.mp3-8694c3617d09b5d5a3f7b4b9aefa57ca.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio_assets/Enemy Shooting.mp3"
+dest_files=["res://.godot/imported/Enemy Shooting.mp3-8694c3617d09b5d5a3f7b4b9aefa57ca.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
