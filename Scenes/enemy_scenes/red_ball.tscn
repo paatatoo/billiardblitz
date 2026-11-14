@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d5u07gybugvh" path="res://Assets/enemy_assets/redball.png" id="3_3wutu"]
 [ext_resource type="Texture2D" uid="uid://db3y6lg5oqarj" path="res://Assets/player_assets/shadow_ellipse.png" id="3_rkoge"]
 [ext_resource type="FontFile" uid="uid://dbwlkmglgxbsx" path="res://Assets/dogicapixel.ttf" id="4_8ifpv"]
+[ext_resource type="AudioStream" uid="uid://nptiukmv34nt" path="res://Assets/audio_assets/Hitting Wall.mp3" id="6_ox386"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkoge"]
 radius = 26.925823
@@ -111,9 +112,9 @@ tracks/0/path = NodePath(".:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 18.892157, -0.083333336, -2.982026, 0, 0),
-"times": PackedFloat32Array(0, 0.3)
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.03666667, 0, 0.0033333327, 0, 1, -0.04, -2.3856206, 0.0100000035, 0.5964054, 18.892157, -0.083333336, -2.982026, 0, 0),
+"times": PackedFloat32Array(0, 0.22, 0.24, 0.3)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -122,9 +123,9 @@ tracks/1/path = NodePath(".:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 18.892157, -0.083333336, -2.982026, 0, 0),
-"times": PackedFloat32Array(0, 0.3)
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.03666667, 0, 0.0033333327, 0, 1, -0.04, -2.3856206, 0.0100000035, 0.5964054, 18.892157, -0.083333336, -2.982026, 0, 0),
+"times": PackedFloat32Array(0, 0.22, 0.24, 0.3)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -133,9 +134,9 @@ tracks/2/path = NodePath(".:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 18.892157, -0.083333336, -2.982026, 0, 0),
-"times": PackedFloat32Array(0, 0.3)
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.03666667, 0, 0.0033333327, 0, 1, -0.04, -2.3856206, 0.0100000035, 0.5964054, 18.892157, -0.083333336, -2.982026, 0, 0),
+"times": PackedFloat32Array(0, 0.22, 0.24, 0.3)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -144,9 +145,9 @@ tracks/3/path = NodePath(".:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.3)
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.03666667, 0, 0.0033333327, 0, 1, -0.04, 0, 0.0100000035, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.22, 0.24, 0.3)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -261,6 +262,9 @@ one_shot = true
 [node name="RushTimer" type="Timer" parent="." unique_id=324156183]
 wait_time = 2.0
 one_shot = true
+
+[node name="hit" type="AudioStreamPlayer" parent="." unique_id=295207197]
+stream = ExtResource("6_ox386")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

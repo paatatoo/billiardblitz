@@ -14,3 +14,13 @@ git add .
 git commit -m "Commit name"
 git push
 """
+
+func lose_health(damage):
+	HEALTH -= damage
+	if HEALTH <= 0:
+		print("GAMEOVER")
+		
+func hit_stop(time):
+	get_tree().paused = true
+	await get_tree().create_timer(time).timeout
+	get_tree().paused = false
