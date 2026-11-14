@@ -6,8 +6,6 @@ var state = "idle"
 var direction = 0
 var Health = 3
 
-func _ready() -> void:
-	look_at_player()
 
 func look_at_player():
 	direction = atan2((position.y - Player.position.y), (position.x - Player.position.x))
@@ -15,17 +13,21 @@ func look_at_player():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var delta_x = cos(deg_to_rad(direction))
-	var delta_y = sin(deg_to_rad(direction))
+	if state == "wind":
+		var delta_x = cos(deg_to_rad(direction))
+		var delta_y = sin(deg_to_rad(direction))
 
-	position.x += delta_x * 50 * delta
-	position.y += delta_y * 50 * delta
-
+		position.x -= delta_x * 70 * delta
+		position.y -= delta_y * 70 * delta
+		
 func _on_body_entered(body: Node) -> void:
-	if body.TOKEN_ID == "Player":
+	if body.TOKEN_ID == "Player" and state != "ram":
 		lose_health(1)
-	if state == "ram":
+	if state == "ram" and body.TOKEN_ID == "Player":
+		$AnimationPlayer.play("RESET")
+		$RushTimer.stop()
 		state = "idle"
+		$IdleTimer.start()
 
 func _on_body_exited(body: Node) -> void:
 	pass # Replace with function body.
@@ -38,11 +40,22 @@ func lose_health(damage):
 
 
 func _on_timer_timeout() -> void:
+	$AnimationPlayer.play("flicker")
 	state = "wind"
-	$RamTimer.start()
+	look_at_player()
+	$WindTimer.start()
 
 
 func _on_ram_timer_timeout() -> void:
-	$AnimationPlayer.play("flicker")
-	
+	look_at_player()
+	var delta_x = cos(deg_to_rad(direction))
+	var delta_y = sin(deg_to_rad(direction))
+	linear_velocity = Vector2(delta_x * 600, delta_y * 600)
+	$RushTimer.start()
 	state = "ram"
+
+
+func _on_rush_timer_timeout() -> void:
+	$AnimationPlayer.play("RESET")
+	state = "idle"
+	$IdleTimer.start()

@@ -248,13 +248,20 @@ libraries/ = SubResource("AnimationLibrary_niy18")
 autoplay = &"RESET"
 
 [node name="IdleTimer" type="Timer" parent="." unique_id=1899894206]
+wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="RamTimer" type="Timer" parent="." unique_id=1286005445]
+[node name="WindTimer" type="Timer" parent="." unique_id=1286005445]
+wait_time = 1.2
+one_shot = true
+
+[node name="RushTimer" type="Timer" parent="." unique_id=324156183]
+wait_time = 2.0
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="RamTimer" to="." method="_on_ram_timer_timeout"]
+[connection signal="timeout" from="WindTimer" to="." method="_on_ram_timer_timeout"]
+[connection signal="timeout" from="RushTimer" to="." method="_on_rush_timer_timeout"]

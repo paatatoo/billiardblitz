@@ -6,3 +6,9 @@ var SPEED := 3.8
 var RANGE := 320
 var ATK_POWER := 1
 var RESILIENCE := 2.0
+
+"""
+git add .
+git commit -m "Commit name"
+git push
+"""
