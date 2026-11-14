@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://db3y6lg5oqarj" path="res://Assets/player_assets/shadow_ellipse.png" id="3_udtxu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_awwja"]
-radius = 38.013157
+radius = 28.0
 
 [node name="Player" type="RigidBody2D" unique_id=1103906664]
 physics_material_override = ExtResource("1_rep5y")
@@ -17,15 +17,15 @@ script = ExtResource("1_i0non")
 [node name="ShadowEllipse" type="Sprite2D" parent="." unique_id=1467984620]
 modulate = Color(1, 1, 1, 0.5921569)
 texture_filter = 1
-position = Vector2(0, 42)
-scale = Vector2(3, 3)
+position = Vector2(0, 32)
+scale = Vector2(2, 2)
 texture = ExtResource("3_udtxu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1088110731]
 texture_filter = 1
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 texture = ExtResource("3_rep5y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1356902892]
-position = Vector2(0, 15)
+position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_awwja")

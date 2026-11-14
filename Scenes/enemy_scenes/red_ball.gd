@@ -21,12 +21,13 @@ func _process(delta: float) -> void:
 		position.y -= delta_y * 70 * delta
 		
 func _on_body_entered(body: Node) -> void:
-	if body.TOKEN_ID == "Player" and state != "ram":
+	if body.TOKEN_ID == "Player" and state != "ram" and body.linear_velocity.length() > 200:
 		lose_health(1)
 	if state == "ram" and body.TOKEN_ID == "Player":
 		$AnimationPlayer.play("RESET")
 		$RushTimer.stop()
 		state = "idle"
+		Game.HEALTH -= 20
 		$IdleTimer.start()
 
 func _on_body_exited(body: Node) -> void:

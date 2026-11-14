@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://c8jwsol377fub"]
 
-[ext_resource type="Texture2D" uid="uid://b0i7hx2tlpewl" path="res://Assets/bluepooltable.png" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://b0i7hx2tlpewl" path="res://Assets/bg_assets/bluepooltable.png" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://8p7jecejhyag" path="res://Scenes/player_scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://brqtt3m7f865t" path="res://trigger.gd" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://6i07si1g50xv" path="res://Scenes/enemy_scenes/red_ball.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bstn031g7qotg" path="res://Scenes/enemy_scenes/blue_ball.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bgrbe7fvuhial" path="res://Scenes/ui_scenes/ui.tscn" id="6_7mycd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_awwja"]
 size = Vector2(1280, 30)
@@ -18,9 +19,10 @@ y_sort_enabled = true
 [node name="PoolTable" type="TextureRect" parent="." unique_id=1379057274]
 z_index = -10
 texture_filter = 1
-offset_right = 280.0
-offset_bottom = 168.0
-scale = Vector2(4.5535717, 4.2857146)
+offset_left = 122.0
+offset_top = 60.0
+offset_right = 1158.6666
+offset_bottom = 682.0
 texture = ExtResource("1_1bvp3")
 
 [node name="Player" parent="." unique_id=1103906664 instance=ExtResource("1_ig7tw")]
@@ -30,19 +32,19 @@ position = Vector2(454, 219)
 script = ExtResource("3_1bvp3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" unique_id=541758563]
-position = Vector2(640, 15)
+position = Vector2(637, 70)
 shape = SubResource("RectangleShape2D_awwja")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls" unique_id=1487097335]
-position = Vector2(640, 705)
+position = Vector2(638, 671)
 shape = SubResource("RectangleShape2D_awwja")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls" unique_id=1444365550]
-position = Vector2(16, 368)
+position = Vector2(127, 362)
 shape = SubResource("RectangleShape2D_3c16j")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls" unique_id=676041155]
-position = Vector2(1264, 359)
+position = Vector2(1149, 360)
 shape = SubResource("RectangleShape2D_3c16j")
 
 [node name="Hazards" type="Node" parent="." unique_id=1907724121]
@@ -55,3 +57,5 @@ Player = NodePath("../Player")
 
 [node name="blue_ball" parent="." unique_id=1130954465 instance=ExtResource("5_lquwl")]
 position = Vector2(947, 508)
+
+[node name="UI" parent="." unique_id=1784741763 instance=ExtResource("6_7mycd")]

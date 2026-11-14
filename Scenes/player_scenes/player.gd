@@ -1,10 +1,19 @@
 extends RigidBody2D
 
 const TOKEN_ID = "Player"
+var stamina_timer := 0.0
 var slowed = false
 
 func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	
+	if Game.STAMINA < 1.0:
+		stamina_timer += delta
+		if stamina_timer >= 1.0 and Game.player_state != "focus":
+			print(stamina_timer)
+			stamina_timer = 0.0
+			Game.STAMINA += 0.25
+
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and Game.STAMINA >= 0.5:
 		Engine.time_scale = 0.2
 		Game.player_state = "focus"
 	if Game.player_state == "focus" and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -14,6 +23,7 @@ func _process(delta: float) -> void:
 		if slowed:
 			linear_velocity *= 0.4
 		Game.player_state = "idle"
+		Game.STAMINA -= 0.5
 	queue_redraw()
 
 func _draw():

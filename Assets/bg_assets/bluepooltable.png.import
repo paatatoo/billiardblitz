@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhhnix8epg6ak"
-path="res://.godot/imported/Glass_Shards.png-bc1c85b7639f8d38824afb46a490584b.ctex"
+uid="uid://b0i7hx2tlpewl"
+path="res://.godot/imported/bluepooltable.png-2123441e730fd5bc8710be0f08be913d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Glass_Shards.png"
-dest_files=["res://.godot/imported/Glass_Shards.png-bc1c85b7639f8d38824afb46a490584b.ctex"]
+source_file="res://Assets/bg_assets/bluepooltable.png"
+dest_files=["res://.godot/imported/bluepooltable.png-2123441e730fd5bc8710be0f08be913d.ctex"]
 
 [params]
 

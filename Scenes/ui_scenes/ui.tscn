@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bgrbe7fvuhial"]
+
+[ext_resource type="Script" uid="uid://cl67ke6hjbj3i" path="res://Scenes/ui_scenes/ui.gd" id="1_le4aj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2legv"]
+bg_color = Color(1, 0.27999997, 0.27999997, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_le4aj"]
+bg_color = Color(0.24000001, 1, 0.32866675, 1)
+
+[node name="UI" type="CanvasLayer" unique_id=1784741763]
+script = ExtResource("1_le4aj")
+
+[node name="HPBar" type="ProgressBar" parent="." unique_id=1023806772]
+offset_left = 14.0
+offset_top = 21.0
+offset_right = 971.0
+offset_bottom = 48.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_2legv")
+
+[node name="STAMINABar" type="ProgressBar" parent="." unique_id=982885252]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -295.0
+offset_top = 21.0
+offset_right = -16.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_le4aj")
+max_value = 1.0

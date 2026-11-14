@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://db3y6lg5oqarj" path="res://Assets/player_assets/shadow_ellipse.png" id="3_rkoge"]
 [ext_resource type="FontFile" uid="uid://dbwlkmglgxbsx" path="res://Assets/dogicapixel.ttf" id="4_8ifpv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_awwja"]
-radius = 36.013885
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkoge"]
+radius = 26.925823
 
 [sub_resource type="Animation" id="Animation_rkoge"]
 length = 0.001
@@ -200,6 +200,7 @@ _data = {
 }
 
 [node name="RedBall" type="RigidBody2D" unique_id=1480980207]
+mass = 3.0
 physics_material_override = ExtResource("1_ga0h2")
 gravity_scale = 0.0
 lock_rotation = true
@@ -207,21 +208,17 @@ contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_ilkm3")
 
-[node name="ShadowEllipse" type="Sprite2D" parent="." unique_id=275549615]
+[node name="ShadowEllipse" type="Sprite2D" parent="." unique_id=707713378]
 modulate = Color(1, 1, 1, 0.5921569)
 texture_filter = 1
-position = Vector2(0, 42)
-scale = Vector2(3, 3)
+position = Vector2(0, 32)
+scale = Vector2(2, 2)
 texture = ExtResource("3_rkoge")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1047437647]
 texture_filter = 1
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 texture = ExtResource("3_3wutu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=443020049]
-position = Vector2(0, 17)
-shape = SubResource("CircleShape2D_awwja")
 
 [node name="HPCounter" type="Label" parent="." unique_id=840580534]
 texture_filter = 1
@@ -231,17 +228,22 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -19.0
-offset_top = -36.0
+offset_top = -32.0
 offset_right = 21.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_8ifpv")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 18
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=217894445]
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_rkoge")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=121302939]
 libraries/ = SubResource("AnimationLibrary_niy18")

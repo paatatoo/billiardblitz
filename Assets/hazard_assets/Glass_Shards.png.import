@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6fms4qfsc8wk"
-path="res://.godot/imported/pooltable.png-bcdb80b78231156b1f8a402b5e909009.ctex"
+uid="uid://bhhnix8epg6ak"
+path="res://.godot/imported/Glass_Shards.png-d6b12a647b5854818469e9fc5bc30860.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/pooltable.png"
-dest_files=["res://.godot/imported/pooltable.png-bcdb80b78231156b1f8a402b5e909009.ctex"]
+source_file="res://Assets/hazard_assets/Glass_Shards.png"
+dest_files=["res://.godot/imported/Glass_Shards.png-d6b12a647b5854818469e9fc5bc30860.ctex"]
 
 [params]
 

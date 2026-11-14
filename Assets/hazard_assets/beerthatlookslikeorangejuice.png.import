@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0i7hx2tlpewl"
-path="res://.godot/imported/bluepooltable.png-4833b2a66c8fd71eed898b661ad81b72.ctex"
+uid="uid://dhfypd5xq7srl"
+path="res://.godot/imported/beerthatlookslikeorangejuice.png-099df26d75ac36b02ec37a4ccb4f79da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/bluepooltable.png"
-dest_files=["res://.godot/imported/bluepooltable.png-4833b2a66c8fd71eed898b661ad81b72.ctex"]
+source_file="res://Assets/hazard_assets/beerthatlookslikeorangejuice.png"
+dest_files=["res://.godot/imported/beerthatlookslikeorangejuice.png-099df26d75ac36b02ec37a4ccb4f79da.ctex"]
 
 [params]
 
