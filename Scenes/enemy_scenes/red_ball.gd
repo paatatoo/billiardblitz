@@ -6,7 +6,6 @@ var state = "idle"
 var direction = 0
 var Health = 3
 
-
 func look_at_player():
 	direction = atan2((position.y - Player.position.y), (position.x - Player.position.x))
 	direction = 180 + round((direction * 180/PI))
@@ -22,13 +21,17 @@ func _process(delta: float) -> void:
 		
 func _on_body_entered(body: Node) -> void:
 	if body.TOKEN_ID == "Player" and state != "ram" and body.linear_velocity.length() > 200:
+		$hit.play()
 		lose_health(1)
+		Game.hit_stop(0.1)
+		
 	if state == "ram" and body.TOKEN_ID == "Player":
 		$AnimationPlayer.play("RESET")
 		$RushTimer.stop()
 		state = "idle"
-		Game.HEALTH -= 20
+		Game.lose_health(30)
 		$IdleTimer.start()
+		
 
 func _on_body_exited(body: Node) -> void:
 	pass # Replace with function body.
