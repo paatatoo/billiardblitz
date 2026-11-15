@@ -14,7 +14,7 @@ script = ExtResource("1_le4aj")
 [node name="HPBar" type="ProgressBar" parent="." unique_id=1023806772]
 offset_left = 14.0
 offset_top = 21.0
-offset_right = 971.0
+offset_right = 867.0
 offset_bottom = 48.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_2legv")
 
@@ -22,7 +22,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_2legv")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -295.0
+offset_left = -401.0
 offset_top = 21.0
 offset_right = -16.0
 offset_bottom = 48.0

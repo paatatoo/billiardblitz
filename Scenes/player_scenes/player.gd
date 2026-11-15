@@ -9,7 +9,6 @@ func _process(delta: float) -> void:
 	if Game.STAMINA < 1.0:
 		stamina_timer += delta
 		if stamina_timer >= 1.0 and Game.player_state != "focus":
-			print(stamina_timer)
 			stamina_timer = 0.0
 			Game.STAMINA += 0.25
 

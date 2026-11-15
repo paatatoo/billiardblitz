@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://d5u07gybugvh" path="res://Assets/enemy_assets/redball.png" id="3_3wutu"]
 [ext_resource type="Texture2D" uid="uid://db3y6lg5oqarj" path="res://Assets/player_assets/shadow_ellipse.png" id="3_rkoge"]
 [ext_resource type="FontFile" uid="uid://dbwlkmglgxbsx" path="res://Assets/dogicapixel.ttf" id="4_8ifpv"]
-[ext_resource type="AudioStream" uid="uid://nptiukmv34nt" path="res://Assets/audio_assets/Hitting Wall.mp3" id="6_ox386"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkoge"]
 radius = 26.925823
@@ -59,7 +58,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HPCounter:theme_override_colors/font_color:r")
+tracks/4/path = NodePath("Graphic/HPCounter:theme_override_colors/font_color:r")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -70,7 +69,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HPCounter:theme_override_colors/font_color:g")
+tracks/5/path = NodePath("Graphic/HPCounter:theme_override_colors/font_color:g")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -81,7 +80,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HPCounter:theme_override_colors/font_color:b")
+tracks/6/path = NodePath("Graphic/HPCounter:theme_override_colors/font_color:b")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -92,7 +91,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HPCounter:theme_override_colors/font_color:a")
+tracks/7/path = NodePath("Graphic/HPCounter:theme_override_colors/font_color:a")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -152,7 +151,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HPCounter:theme_override_colors/font_color:r")
+tracks/4/path = NodePath("Graphic/HPCounter:theme_override_colors/font_color:r")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -163,7 +162,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HPCounter:theme_override_colors/font_color:g")
+tracks/5/path = NodePath("Graphic/HPCounter:theme_override_colors/font_color:g")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -174,7 +173,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HPCounter:theme_override_colors/font_color:b")
+tracks/6/path = NodePath("Graphic/HPCounter:theme_override_colors/font_color:b")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -185,7 +184,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HPCounter:theme_override_colors/font_color:a")
+tracks/7/path = NodePath("Graphic/HPCounter:theme_override_colors/font_color:a")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -216,12 +215,14 @@ position = Vector2(0, 32)
 scale = Vector2(2, 2)
 texture = ExtResource("3_rkoge")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1047437647]
+[node name="Graphic" type="Node2D" parent="." unique_id=1139655839]
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphic" unique_id=1047437647]
 texture_filter = 1
 scale = Vector2(3, 3)
 texture = ExtResource("3_3wutu")
 
-[node name="HPCounter" type="Label" parent="." unique_id=840580534]
+[node name="HPCounter" type="Label" parent="Graphic" unique_id=840580534]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -237,7 +238,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_8ifpv")
 theme_override_font_sizes/font_size = 18
-text = "3"
+text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
@@ -251,7 +252,7 @@ libraries/ = SubResource("AnimationLibrary_niy18")
 autoplay = &"RESET"
 
 [node name="IdleTimer" type="Timer" parent="." unique_id=1899894206]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 autostart = true
 
@@ -263,11 +264,13 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[node name="hit" type="AudioStreamPlayer" parent="." unique_id=295207197]
-stream = ExtResource("6_ox386")
+[node name="InvincibilityTimer" type="Timer" parent="." unique_id=1556467413]
+wait_time = 0.8
+one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="WindTimer" to="." method="_on_ram_timer_timeout"]
 [connection signal="timeout" from="RushTimer" to="." method="_on_rush_timer_timeout"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

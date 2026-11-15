@@ -1,21 +1,25 @@
 [gd_scene format=3 uid="uid://dkrmwpvyvqdkh"]
 
 [ext_resource type="Script" uid="uid://duif8ckw1bbii" path="res://Scenes/hazard_scenes/beer_puddle.gd" id="1_xqa7x"]
-[ext_resource type="Texture2D" uid="uid://bqgeymlbkfid2" path="res://icon.svg" id="2_4c21d"]
+[ext_resource type="Texture2D" uid="uid://dhfypd5xq7srl" path="res://Assets/hazard_assets/beerthatlookslikeorangejuice.png" id="2_ojjkf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c16j"]
-size = Vector2(402, 246)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3jqym"]
+radius = 121.0
+height = 328.0
 
 [node name="BeerPuddle" type="Area2D" unique_id=273863080]
 z_index = -4
 script = ExtResource("1_xqa7x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1689328606]
-shape = SubResource("RectangleShape2D_3c16j")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_3jqym")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1219626928]
-scale = Vector2(3.0937502, 1.9375)
-texture = ExtResource("2_4c21d")
+modulate = Color(1, 1, 1, 0.6784314)
+position = Vector2(11, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("2_ojjkf")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

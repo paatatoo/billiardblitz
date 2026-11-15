@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://xo60iuwy8220"]
+
+[ext_resource type="Texture2D" uid="uid://bfuqnf7escess" path="res://Assets/enemy_assets/8ball.png" id="1_0srfu"]
+[ext_resource type="Texture2D" uid="uid://db3y6lg5oqarj" path="res://Assets/player_assets/shadow_ellipse.png" id="1_3jqym"]
+[ext_resource type="PhysicsMaterial" uid="uid://cvbhfb7xa04c5" path="res://Scenes/physics_scenes/ball_physics.tres" id="1_3qsod"]
+[ext_resource type="Script" uid="uid://rivqkkw07sk" path="res://Scenes/enemy_scenes/8_ball.gd" id="1_s2ix7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_awwja"]
+radius = 40.0
+
+[node name="8ball" type="RigidBody2D" unique_id=711555675]
+mass = 10.0
+physics_material_override = ExtResource("1_3qsod")
+gravity_scale = 0.0
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 7
+script = ExtResource("1_s2ix7")
+
+[node name="ShadowEllipse" type="Sprite2D" parent="." unique_id=535079707]
+modulate = Color(1, 1, 1, 0.5921569)
+texture_filter = 1
+position = Vector2(0, 40)
+scale = Vector2(3, 3)
+texture = ExtResource("1_3jqym")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=706733197]
+scale = Vector2(4, 4)
+texture = ExtResource("1_0srfu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2133700651]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_awwja")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1880549190]
+wait_time = 4.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1329677786]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_timer_timeout"]

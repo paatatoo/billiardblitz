@@ -4,7 +4,17 @@ extends RigidBody2D
 const TOKEN_ID = "Enemy"
 var state = "idle"
 var direction = 0
-var Health = 3
+var can_get_hit = true
+var Health = 2
+
+func _ready() -> void:
+	var tween = get_tree().create_tween()
+	$Graphic.position.y = -position.y - 120
+	tween.tween_property($Graphic, "position", Vector2(0, 0), 1.8).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	var shadowtween = get_tree().create_tween()
+	$ShadowEllipse.scale = Vector2(0.1, 0.1)
+	shadowtween.tween_property($ShadowEllipse, "scale", Vector2(2.2, 2.2), 0.6).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+
 
 func look_at_player():
 	direction = atan2((position.y - Player.position.y), (position.x - Player.position.x))
@@ -12,6 +22,7 @@ func look_at_player():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$Graphic/HPCounter.text = str(Health)
 	if state == "wind":
 		var delta_x = cos(deg_to_rad(direction))
 		var delta_y = sin(deg_to_rad(direction))
@@ -20,12 +31,13 @@ func _process(delta: float) -> void:
 		position.y -= delta_y * 70 * delta
 		
 func _on_body_entered(body: Node) -> void:
-	if body.TOKEN_ID == "Player" and state != "ram" and body.linear_velocity.length() > 200:
-		$hit.play()
+	if body.TOKEN_ID == "Player" and state != "ram" and body.linear_velocity.length() > 200 and can_get_hit:
 		lose_health(1)
 		Game.hit_stop(0.1)
 		
 	if state == "ram" and body.TOKEN_ID == "Player":
+		can_get_hit = false
+		$InvincibilityTimer.start()
 		$AnimationPlayer.play("RESET")
 		$RushTimer.stop()
 		state = "idle"
@@ -38,9 +50,12 @@ func _on_body_exited(body: Node) -> void:
 
 func lose_health(damage):
 	Health -= Game.ATK_POWER
-	$HPCounter.text = str(Health)
 	if Health <= 0:
+		Sfx.play_sound("Die")
+		get_parent().dead_enemies += 1
 		queue_free()
+	else:
+		Sfx.play_sound("Hit")
 
 
 func _on_timer_timeout() -> void:
@@ -63,3 +78,7 @@ func _on_rush_timer_timeout() -> void:
 	$AnimationPlayer.play("RESET")
 	state = "idle"
 	$IdleTimer.start()
+
+
+func _on_invincibility_timer_timeout() -> void:
+	can_get_hit = true

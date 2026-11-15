@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dbwx25hjwna3r" path="res://Assets/enemy_assets/blueball.png" id="1_m6x62"]
 [ext_resource type="FontFile" uid="uid://dbwlkmglgxbsx" path="res://Assets/dogicapixel.ttf" id="2_8xuby"]
 [ext_resource type="Texture2D" uid="uid://db3y6lg5oqarj" path="res://Assets/player_assets/shadow_ellipse.png" id="3_sdjrx"]
-[ext_resource type="AudioStream" uid="uid://nptiukmv34nt" path="res://Assets/audio_assets/Hitting Wall.mp3" id="6_upvel"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdjrx"]
 radius = 26.925823
@@ -26,41 +25,44 @@ position = Vector2(0, 32)
 scale = Vector2(2, 2)
 texture = ExtResource("3_sdjrx")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1209143595]
+[node name="Graphic" type="Node2D" parent="." unique_id=1244457568]
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphic" unique_id=1209143595]
 texture_filter = 1
 scale = Vector2(3, 3)
 texture = ExtResource("1_m6x62")
 
-[node name="HPCounter" type="Label" parent="." unique_id=584467418]
+[node name="HPCounter" type="Label" parent="Graphic" unique_id=584467418]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -19.0
-offset_top = -27.0
-offset_right = 21.0
-offset_bottom = 9.0
+offset_left = -21.0
+offset_top = -31.0
+offset_right = 19.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_8xuby")
-theme_override_font_sizes/font_size = 12
-text = "5"
+theme_override_font_sizes/font_size = 18
+text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294130314]
 position = Vector2(0, 14)
 shape = SubResource("CircleShape2D_sdjrx")
 
 [node name="shardstimer" type="Timer" parent="." unique_id=1115435793]
+one_shot = true
 
 [node name="move_timer" type="Timer" parent="." unique_id=68965432]
-
-[node name="hit" type="AudioStreamPlayer" parent="." unique_id=20657295]
-stream = ExtResource("6_upvel")
+wait_time = 3.0
+autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

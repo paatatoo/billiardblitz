@@ -1,12 +1,12 @@
-[gd_scene format=4 uid="uid://c8jwsol377fub"]
+[gd_scene format=4 uid="uid://vmxshuwstwd8"]
 
-[ext_resource type="Texture2D" uid="uid://b0i7hx2tlpewl" path="res://Assets/bg_assets/bluepooltable.png" id="1_1bvp3"]
-[ext_resource type="Script" uid="uid://0iyhkb2f1ql7" path="res://main.gd" id="1_272bh"]
-[ext_resource type="PackedScene" uid="uid://8p7jecejhyag" path="res://Scenes/player_scenes/player.tscn" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://brqtt3m7f865t" path="res://trigger.gd" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://6i07si1g50xv" path="res://Scenes/enemy_scenes/red_ball.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://bstn031g7qotg" path="res://Scenes/enemy_scenes/blue_ball.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bgrbe7fvuhial" path="res://Scenes/ui_scenes/ui.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://dv4hat2ib73g4" path="res://Levels/level_3.gd" id="1_vr4rd"]
+[ext_resource type="PackedScene" uid="uid://b30gw5wlmjd5a" path="res://Levels/level4.tscn" id="2_ltsrt"]
+[ext_resource type="Texture2D" uid="uid://bw78ust5fwprd" path="res://Assets/bg_assets/redpooltable.png" id="2_vr4rd"]
+[ext_resource type="PackedScene" uid="uid://8p7jecejhyag" path="res://Scenes/player_scenes/player.tscn" id="3_ltsrt"]
+[ext_resource type="Script" uid="uid://brqtt3m7f865t" path="res://trigger.gd" id="4_2jaon"]
+[ext_resource type="PackedScene" uid="uid://bgrbe7fvuhial" path="res://Scenes/ui_scenes/ui.tscn" id="5_2cw1i"]
+[ext_resource type="PackedScene" uid="uid://dkrmwpvyvqdkh" path="res://Scenes/hazard_scenes/beer_puddle.tscn" id="5_eex2w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_awwja"]
 size = Vector2(1280, 30)
@@ -28,7 +28,10 @@ stereo = true
 
 [node name="Main" type="Node2D" unique_id=1754576298]
 y_sort_enabled = true
-script = ExtResource("1_272bh")
+script = ExtResource("1_vr4rd")
+TargetScene = ExtResource("2_ltsrt")
+metadata/_edit_horizontal_guides_ = [85.0, 85.0, 657.0]
+metadata/_edit_vertical_guides_ = [148.0, 1133.0]
 
 [node name="PoolTable" type="TextureRect" parent="." unique_id=1379057274]
 z_index = -10
@@ -37,13 +40,13 @@ offset_left = 122.0
 offset_top = 60.0
 offset_right = 1158.6666
 offset_bottom = 682.0
-texture = ExtResource("1_1bvp3")
+texture = ExtResource("2_vr4rd")
 
-[node name="Player" parent="." unique_id=1103906664 instance=ExtResource("1_ig7tw")]
-position = Vector2(454, 219)
+[node name="Player" parent="." unique_id=1103906664 instance=ExtResource("3_ltsrt")]
+position = Vector2(640, 360)
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=1195657456]
-script = ExtResource("3_1bvp3")
+script = ExtResource("4_2jaon")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" unique_id=541758563]
 position = Vector2(637, 70)
@@ -54,7 +57,7 @@ position = Vector2(638, 671)
 shape = SubResource("RectangleShape2D_awwja")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls" unique_id=1444365550]
-position = Vector2(127, 362)
+position = Vector2(132, 362)
 shape = SubResource("RectangleShape2D_3c16j")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls" unique_id=676041155]
@@ -63,17 +66,13 @@ shape = SubResource("RectangleShape2D_3c16j")
 
 [node name="Hazards" type="Node" parent="." unique_id=1907724121]
 
-[node name="Enemies" type="Node" parent="." unique_id=580858279]
+[node name="BeerPuddle" parent="Hazards" unique_id=273863080 instance=ExtResource("5_eex2w")]
+position = Vector2(413, 248)
 
-[node name="RedBall" parent="." unique_id=1480980207 node_paths=PackedStringArray("Player") instance=ExtResource("3_h2yge")]
-position = Vector2(250, 430)
-Player = NodePath("../Player")
+[node name="BeerPuddle2" parent="Hazards" unique_id=1580040027 instance=ExtResource("5_eex2w")]
+position = Vector2(884, 507)
 
-[node name="blue_ball" parent="." unique_id=1130954465 node_paths=PackedStringArray("Player") instance=ExtResource("5_lquwl")]
-position = Vector2(947, 508)
-Player = NodePath("../Player")
-
-[node name="UI" parent="." unique_id=1784741763 instance=ExtResource("6_7mycd")]
+[node name="UI" parent="." unique_id=1784741763 instance=ExtResource("5_2cw1i")]
 
 [node name="intro" type="AudioStreamPlayer" parent="." unique_id=794923746]
 process_mode = 3
@@ -83,4 +82,21 @@ stream = SubResource("AudioStreamWAV_272bh")
 process_mode = 3
 stream = SubResource("AudioStreamWAV_kek77")
 
+[node name="SpawnTimer" type="Timer" parent="." unique_id=843509366]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Victory" type="Label" parent="." unique_id=1962655880]
+offset_left = 287.0
+offset_top = 100.0
+offset_right = 1003.0
+offset_bottom = 188.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "END OF LEVEL 3
+[enter] to proceed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="finished" from="intro" to="." method="_on_intro_finished"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
